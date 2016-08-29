@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieLibrary">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href='css/app.css' rel="stylesheet">
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+  </head>
+  <body>
+
+    <div class="app-container" ng-cloak>
+      <div ng-controller="MoviesCtrl">
+        <div class="movies-header-toolbar">
+          <div class="movies-edit-panel">
+            <button type="button" class="btn glyphicon glyphicon-plus" ng-click="addMovie()"></button>
+            <button ng-show="!isDeleting" type="button" class="btn glyphicon glyphicon-trash"
+            ng-click="deleteMovies()"></button>
+            <button ng-hide="!isDeleting" type="button" class="btn done-button" ng-click="doneDeleteMovies()">Done
+            </button>
+          </div>
+        </div>
+        <div class="movies-container">
+          <li class="movie-container" ng-repeat="movie in movies track by movie.id">
+            <div class="movie-item" ng-click="onMovieClicked()">
+              <div class="movie-image-container">
+                <img class="movie-image" ng-src="{{movie.posterImage}}" alt="film image" ng-click="deleteMovie()"/>
+                <div ng-show="isDeleting" class="movie-delete-icon glyphicon glyphicon-minus-sign delete-icon"/>
+              </div>
+              <div class="movie-name">{{movie.name | uppercase}}</div>
+              <div class="movie-sub-info">
+                <div class="movie-year">{{movie.year}}</div>
+                <div class="movie-resolutions">
+                  <span ng-repeat="res in movie.supportedResolution track by $index">
+                    {{res}}p
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--load scripts-->
+  <script type="text/javascript" src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+  <script type="text/javascript" src="app/app.js"></script>
+  <script type="text/javascript" src="app/movies/movieDirective.js"></script>
+  <script type="text/javascript" src="app/movies/moviesService.js"></script>
+  <script type="text/javascript" src="app/movies/moviesCtrl.js"></script>
+</body>
+</html>
