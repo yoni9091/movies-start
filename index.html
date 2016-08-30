@@ -26,7 +26,8 @@
           </div>
         </div>
         <div class="movies-container">
-          <li class="movie-container" ng-repeat="movie in movies track by movie.id">
+          <li class="movie-container">
+            <div movie-directive></div>
             <div class="movie-item" ng-click="onMovieClicked()">
               <div class="movie-image-container">
                 <img class="movie-image" ng-src="{{movie.posterImage}}" alt="film image" ng-click="deleteMovie()"/>
