@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+/<!DOCTYPE html>
 <html lang="en" ng-app="movieLibrary">
   <head>
     <meta charset="utf-8">
@@ -26,8 +26,9 @@
           </div>
         </div>
         <div class="movies-container">
-          <li class="movie-container">
-            <div movie-directive></div>
+          <li class="movie-container" ng-repeat="movie in movies track by $index">
+
+          
             <div class="movie-item" ng-click="onMovieClicked()">
               <div class="movie-image-container">
                 <img class="movie-image" ng-src="{{movie.posterImage}}" alt="film image" ng-click="deleteMovie()"/>
@@ -53,7 +54,6 @@
   <!--load scripts-->
   <script type="text/javascript" src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
   <script type="text/javascript" src="app/app.js"></script>
-  <script type="text/javascript" src="app/movies/movieDirective.js"></script>
   <script type="text/javascript" src="app/movies/moviesService.js"></script>
   <script type="text/javascript" src="app/movies/moviesCtrl.js"></script>
 </body>
